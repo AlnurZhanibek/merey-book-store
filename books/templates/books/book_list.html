@@ -93,6 +93,11 @@
             cursor: pointer;
         }
 
+        button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
         .error-message {
             color: #f00;
         }
@@ -125,7 +130,7 @@
                     </div>
                     <div class="card-buttons">
                         <button type="button">Buy</button>
-                        <button type="button">Show</button>
+                        <button type="button"><a href="{% url 'book_details' book.id %}">Show</a></button>
                     </div>
                 </div>
             {% empty %}

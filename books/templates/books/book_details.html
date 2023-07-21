@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px;
+            color: #3c3c3c;
+            background-color: #fff;
+            border-bottom: 1px #ccc solid;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            text-align: center;
+        }
+
+        .container h1, .container h2 {
+            font-size: 36px;
+        }
+
+        .container > *:not(:first-child) {
+            margin-top: 16px;
+        }
+
+        .main-form > *:not(:first-child) {
+            margin-top: 16px;
+        }
+
+        nav.main-nav {
+            padding: 16px 0;
+            border-bottom: 2px solid #3c3c3c;
+            margin: 24px 0;
+        }
+
+        .details {
+            display: flex;
+            gap: 32px;
+        }
+
+        .cover {
+            width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+        }
+
+        .cover-image {
+            width: 250px;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .info-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rating {
+            width: 100px;
+        }
+
+        .title {
+            font-size: 32px;
+        }
+
+        .similar h3 {
+            margin: 16px 0;
+            text-align: left;
+        }
+
+        .similar-slider {
+            display: flex;
+            gap: 24px;
+        }
+
+        .card {
+            width: 150px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card-cover {
+            width: 100%;
+        }
+
+        .card-cover-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+
+        .card-title {
+            padding: 8px;
+        }
+
+        .reviews h3 {
+            margin: 16px 0;
+            text-align: left;
+        }
+
+        .review {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .review-info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+        .reviews, .similar {
+            margin-top: 32px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            font-size: 16px;
+            border: #ccc 1px solid;
+            border-radius: 12px;
+            min-width: 300px;
+        }
+
+        button {
+            background-color: #111;
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .error-message {
+            color: #f00;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="top-header">
+            <h1>Book Details</h1>
+        </header>
+        <nav class="main-nav">
+            <a href="{% url 'book_add' %}">Add Book</a>
+        </nav>
+        <main class="details">
+            <div class="cover">
+                <img class="cover-image" src="/static/{{ book.image }}" alt="">
+            </div>
+            <div class="info">
+                <div class="info-top">
+                    <h2 class="title">{{ book.title }}</h2>
+                    <img class="rating" src="/static/images/rating.png" alt="">
+                </div>
+                <h3 class="author">{{ book.author }}</h3>
+                <p class="description">{{ book.description }}</p>
+            </div>
+        </main>
+        <div class="similar">
+            <h3>Similar books</h3>
+            <div class="similar-slider">
+                <div class="card">
+                    <div class="card-cover">
+                        <img class="card-cover-image" src="/static/images/cover1.jpeg" alt="">
+                    </div>
+                    <div class="card-title">
+                        Book One
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">
+                        <img class="card-cover-image" src="/static/images/cover2.jpeg" alt="">
+                    </div>
+                    <div class="card-title">
+                        Book Two
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">
+                        <img class="card-cover-image" src="/static/images/cover3.jpeg" alt="">
+                    </div>
+                    <div class="card-title">
+                        Book Three
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">
+                        <img class="card-cover-image" src="/static/images/cover2.jpeg" alt="">
+                    </div>
+                    <div class="card-title">
+                        Book Two
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews">
+            <h3>Reviews</h3>
+            <div class="review">
+                <img class="review-avatar" src="/static/images/joeyy.jpeg" alt="">
+                <div class="review-info">
+                    <div class="review-name">Joeyy</div>
+                    <div class="review-content">Such an amazing book! #movie</div>
+                </div>
+            </div>
+            <div class="review">
+                <img class="review-avatar" src="/static/images/martha.jpeg" alt="">
+                <div class="review-info">
+                    <div class="review-name">Martha</div>
+                    <div class="review-content">Amazing read, very well written!</div>
+                </div>
+            </div>
+            <div class="review">
+                <img class="review-avatar" src="/static/images/eric.jpeg" alt="">
+                <div class="review-info">
+                    <div class="review-name">Eric</div>
+                    <div class="review-content">Nonsense BS book</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
